@@ -1,7 +1,6 @@
 #!/usr/bin/python
 
 import sys
-from itertools import izip
 
 # Tx Nibbles Size Constants
 version_nibbles = 8
@@ -24,12 +23,12 @@ def read_int(buf):
 
 def read_var_int(buf):
     flag_byte = buf[:2]
-    if flag_byte == 'FD':
-        return read_int(buf[2:2]), 6
-    if flag_byte == 'FE':
-        return read_int(buf[2:4]), 10
-    if flag_byte == 'FF':
-        return read_int(buf[2:8]), 18
+    if flag_byte.lower() == 'fd':
+        return read_int(buf[2:6]), 6
+    if flag_byte.lower() == 'fe':
+        return read_int(buf[2:10]), 10
+    if flag_byte.lower() == 'ff':
+        return read_int(buf[2:18]), 18
     else:
         return read_int(buf[:2]), 2
 
@@ -80,7 +79,7 @@ def convert(txhex):
     
     num_outs, nibbles_read = read_var_int(txhex[index:])
     index += nibbles_read
-    
+
     for i in range(0, num_outs):
         out, nibbles_read = read_output(txhex[index:])
         index += nibbles_read
