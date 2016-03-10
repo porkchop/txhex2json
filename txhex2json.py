@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import sys
-from pybitcointools import *
+from pybitcointools import deserialize
 
 def convert(txhex):
     return deserialize(txhex)
