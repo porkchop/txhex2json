@@ -22,12 +22,12 @@ def read_int(buf):
     return int(buf, 16)
 
 def read_var_int(buf):
-    flag_byte = buf[:2]
-    if flag_byte.lower() == 'fd':
+    flag_byte = buf[:2].lower()
+    if flag_byte == 'fd':
         return read_int(buf[2:6]), 6
-    if flag_byte.lower() == 'fe':
+    if flag_byte == 'fe':
         return read_int(buf[2:10]), 10
-    if flag_byte.lower() == 'ff':
+    if flag_byte == 'ff':
         return read_int(buf[2:18]), 18
     else:
         return read_int(buf[:2]), 2
