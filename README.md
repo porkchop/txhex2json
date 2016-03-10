@@ -1,3 +1,25 @@
-The response to these challenges can be implemented in your strongest programming language (with a preference for Python 2.7, if possible).  We ask that you either send the results back via email or post them on a public repo which can be accessed by our team for evaluation.
+# txhex2json
 
-1. Write a small program that takes a transaction as an input in hex and parses it to output the transaction in JSON.
+A small Python program that takes a Bitcoin transaction as an input in hex and parses it to output the transaction in JSON.
+
+## Install
+
+git clone this repo and ...
+
+```
+$ pip install pybitcointools
+```
+
+## Run
+
+CD into this repo and execute txhex2json.py followed by a tx hex to see the json version of it:
+
+```
+$ ./txhex2json.py 0100000001b14bdcbc3e01bdaad36cc08e81e69c82e1060bc14e518db2b49aa43ad90ba260000000004A0048304402203f16c6f40162ab686621ef3000b04e75418a0c0cb2d8aebeac894ae360ac1e780220ddc15ecdfc3507ac48e1681a33eb60996631bf6bf5bc0a0682c4db743ce7ca2bab01ffffffff0140420f00000000001976
+```
+
+## Tests
+
+```
+$ python ./test.py
+```
